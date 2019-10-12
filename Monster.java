@@ -1,6 +1,6 @@
 import java.awt.Color;
 
-public class Monster extends Mob{
+public class Monster extends Mob {
 	
 	private int health, attackDmg;
 	private boolean alive, waitTurn, seenPlayer;

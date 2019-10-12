@@ -33,8 +33,7 @@ public class Screen extends JPanel implements KeyListener{
 	
 	private int bgRed, bgGreen, bgBlue;
 	private int goalRed, goalGreen, goalBlue;
-	
-	
+		
 	public Screen(){
 		tiles = new Tile[90][50];
 		
@@ -212,7 +211,6 @@ public class Screen extends JPanel implements KeyListener{
 				gr.setColor(invScreenBG);
 				gr.fillRect(60, 10, 880, 480);
 				
-
 				//Highlighting equipped weapon
 				gr.setColor(invScreenEquipped);
 				gr.fillRect(65, (25*ps.getEquippedIndex()) + 20, 300, 20);
@@ -243,15 +241,13 @@ public class Screen extends JPanel implements KeyListener{
 				gr.drawRect((roomArr.get(i).getX()*10+50), (roomArr.get(i).getY()*10), (roomArr.get(i).getSizeX()*10), (roomArr.get(i).getSizeY()*10));
 			}
 			*/
-			
+
 			//Seperating the bottom bar into halves
 			gr.setColor(Color.green);
 			gr.fillRect(510, 510, 481, 81);
 			
 			gr.setColor(Color.black);
 			gr.drawString(level + "", 520, 520);
-
-			
 			
 			//Drawing p1's health bar (left side)
 			gr.setColor(healthRed);
@@ -260,15 +256,12 @@ public class Screen extends JPanel implements KeyListener{
 			gr.setColor(Color.black);
 			gr.fillRect(0, 0, 48, (500/ps.getMaxHealth()) * (ps.getMaxHealth() - ps.getHealth()));
 			
-			
 			//Drawing p1's mana bar (right side) -- color should change depending on player class
 			gr.setColor(manaBlue);
 			gr.fillRect(950, 0, 50, 500); //Right Side
 			
 			gr.setColor(Color.black);
 			gr.fillRect(950, 0, 50, (500/ps.getMaxMana()) * (ps.getMaxMana() - ps.getMana()));
-			
-			
 			
 			//Drawing the outline of the game area
 			gr.setColor(gameAreaOutline);
@@ -296,39 +289,18 @@ public class Screen extends JPanel implements KeyListener{
 			}
 		}
 		
-		
 		//Clearing roomArr & mobs lists & item lists
 		roomArr.clear();
 		mobs.clear();
 		items.clear();
 			
 		 
-		 if(level%5 == 0){
+		 if(level%5 == 0){ //Switch to Boss Fight Room
 			 
-			 
-			 p1 = new Player(20, 20);
-			 roomArr.add(new Room(10, 10, 30, 30));
-			 
-			 for(int i =10; i < 40; i++){
-				 for(int j = 10; j < 40; j++){
-				 	 tiles[i][j]=new FloorTile(i, j);
-				 }
-			 }
-			 
-			 
-			 int randX =0, randY = 0;
-			do{
-				do{
-					randX = (int) (Math.random() * 90);
-					randY = (int) (Math.random() * 50);
-				} while(!(tiles[randX][randY] instanceof FloorTile && !(tiles[randX][randY] instanceof Player)));
-			} while(!isInRoom(randX, randY));
-			 
-			 mobs.add(new Boss(randX, randY));
-			 
-			 stairX = -1;
-			 stairY = -1;
-			 
+			
+
+
+
 		 } else {
 			
 			
@@ -378,9 +350,7 @@ public class Screen extends JPanel implements KeyListener{
 					}	
 				}
 			}
-			
-			
-			
+				
 			//Placing the stairs to the next level
 			int randX, randY;
 			
@@ -453,11 +423,6 @@ public class Screen extends JPanel implements KeyListener{
 			}
 			
 		 }
-	
-		
-		
-		
-		
 		
 	}
 	
@@ -536,8 +501,6 @@ public class Screen extends JPanel implements KeyListener{
 			
 			roomConnector(r1, r2);
 		}
-		
-		
 		
 	}
 	

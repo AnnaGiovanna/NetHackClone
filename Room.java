@@ -4,6 +4,7 @@ public class Room{
 	
 	private int startX, startY, sizeX, sizeY;
 	private ArrayList<Integer> connections;
+	
 	public Room(int x, int y, int sizeX, int sizeY){
 		startX = x;
 		startY = y;
